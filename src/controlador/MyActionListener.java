@@ -1,14 +1,9 @@
 package controlador;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.xml.bind.Marshaller.Listener;
-
-import vista.Botonera;
 
 public class MyActionListener implements ActionListener {
 
@@ -35,6 +30,7 @@ public class MyActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton boton = (JButton) e.getSource();
 		String coordenadas = boton.getName();
-		paraUI.terMain(coordenadas);
+		String simbolo = boton.getText();
+		paraUI.terMain(coordenadas, simbolo);
 	}
 }

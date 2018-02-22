@@ -31,6 +31,7 @@ public class Botonera extends JPanel {
 			for (int j = 0; j < this.botones[i].length; j++) {
 				this.botones[i][j] = new JButton();
 				this.botones[i][j].setName(String.valueOf(i) + String.valueOf(j));
+				this.botones[i][j].setText("");
 				this.botones[i][j].setBounds(x, y, this.ladoBoton, this.ladoBoton);
 				this.add(this.botones[i][j]);
 				x += this.ladoBoton;

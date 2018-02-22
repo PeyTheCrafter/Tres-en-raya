@@ -1,7 +1,5 @@
 package controlador;
 
-import javax.swing.JButton;
-
 import vista.TresNRayaUI;
 
 public class ParaTresNRayaUI extends TresNRayaUI {
@@ -10,7 +8,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 
 	public ParaTresNRayaUI() {
 		super();
-		actualizarBotones();
+		actualizarVentana();
 		for (int i = 0; i < this.botonera.botones.length; i++) {
 			for (int j = 0; j < this.botonera.botones[i].length; j++) {
 				this.botonera.botones[i][j].addActionListener(listener);
@@ -18,33 +16,26 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		}
 	}
 
-	public void terMain(String coordenadas) {
+	public void terMain(String coordenadas, String simbolo) {
+		for (int i = 0; i < 20; i++) {
+			System.out.println();
+		}
 		int x = interpretarCoordenada(coordenadas)[0];
 		int y = interpretarCoordenada(coordenadas)[1];
-		JButton boton = this.botonera.botones[x][y];
-		System.out.println("Coordenadas: " + x + " " + y);
 		// Establecer las coordenadas.
-		if (this.control.numerojugada < 7) {
+		if (this.control.numerojugada <= 6) {
 			if (this.control.tablero[x][y] == 0) {
 				this.control.destinox = x;
 				this.control.destinoy = y;
-			} else {
-				System.out.println(this.control.indicarAnomalia());
 			}
 		} else {
-			// Mover fichas.
-		}
 
-		System.out.println(this.control.indicarAnomalia());
-		System.out.println(this.control.muestraLetrero());
+		}
 
 		// Proceso normal de juego.
 		this.control.realizarJugada();
-		actualizarBotones();
-		mostrarTablero();
-		System.out.println("Turno: " + this.control.verTurno());
-		System.out.println("Número jugada: " + this.control.numerojugada);
 
+		actualizarVentana();
 	}
 
 	/**
@@ -77,24 +68,21 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	/**
 	 * Actualiza los textos de los botones.
 	 */
-	public void actualizarBotones() {
-		limpiarBotones();
-		for (int i = 0; i < this.botonera.botones.length; i++) {
-			for (int j = 0; j < this.botonera.botones.length; j++) {
-				 this.botonera.botones[i][j]
-				 .setText(String.valueOf(this.control.retornaSimbolo(this.control.tablero[i][j])));
-				//this.botonera.botones[i][j].setText(String.valueOf(this.control.tablero[i][j]));
-			}
-		}
+	public void actualizarVentana() {
+		actualizarBotones();
+		actualizarInformacion();
+	}
+	
+	private void actualizarInformacion() {
+		lblTurno.setText("Turno: " + String.valueOf(this.control.verTurno()));
+		lblJugada.setText("Jugada: " + this.control.numerojugada);
 	}
 
-	/**
-	 * Borra los textos de los botones.
-	 */
-	private void limpiarBotones() {
+	private void actualizarBotones() {
 		for (int i = 0; i < this.botonera.botones.length; i++) {
 			for (int j = 0; j < this.botonera.botones.length; j++) {
-				this.botonera.botones[i][j].setText("");
+				this.botonera.botones[i][j]
+						.setText(String.valueOf(this.control.retornaSimbolo(this.control.tablero[i][j])));
 			}
 		}
 	}
