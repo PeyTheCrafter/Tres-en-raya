@@ -81,9 +81,9 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		limpiarBotones();
 		for (int i = 0; i < this.botonera.botones.length; i++) {
 			for (int j = 0; j < this.botonera.botones.length; j++) {
-				// this.botonera.botones[i][j]
-				// .setText(String.valueOf(this.control.retornaSimbolo(this.control.tablero[i][j])));
-				this.botonera.botones[i][j].setText(String.valueOf(this.control.tablero[i][j]));
+				 this.botonera.botones[i][j]
+				 .setText(String.valueOf(this.control.retornaSimbolo(this.control.tablero[i][j])));
+				//this.botonera.botones[i][j].setText(String.valueOf(this.control.tablero[i][j]));
 			}
 		}
 	}
