@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.border.LineBorder;
 
 public class Botonera extends JPanel {
 
@@ -21,6 +22,8 @@ public class Botonera extends JPanel {
 	 * Create the panel.
 	 */
 	public Botonera(int x, int y) {
+		setForeground(Color.BLACK);
+		setBackground(Color.DARK_GRAY);
 		this.setBounds(x, y, this.anchoPanel, this.altoPanel);
 		setLayout(null);
 		iniciarBotonera();
@@ -33,8 +36,10 @@ public class Botonera extends JPanel {
 			for (int j = 0; j < this.botones[i].length; j++) {
 				this.botones[i][j] = new JButton();
 				this.botones[i][j].setName(String.valueOf(i) + String.valueOf(j));
-				this.botones[i][j].setText("");
+				this.botones[i][j].setBorder(new LineBorder(Color.BLACK, 2));
+				this.botones[i][j].setContentAreaFilled(false);
 				this.botones[i][j].setBounds(x, y, this.ladoBoton, this.ladoBoton);
+				this.botones[i][j].setForeground(Color.WHITE);
 				this.botones[i][j].setFont(new Font("Tahoma", 1, 24));
 				this.add(this.botones[i][j]);
 				x += this.ladoBoton;

@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 import vista.TresNRayaUI;
+import javax.swing.SwingConstants;
 
 public class ParaTresNRayaUI extends TresNRayaUI {
 	TresNRaya control = new TresNRaya();
@@ -12,6 +13,11 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 
 	public ParaTresNRayaUI() {
 		super();
+		txtAnomalia.setBorder(null);
+		txtMensaje.setBorder(null);
+		lblTurno.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJugada.setForeground(Color.WHITE);
+		lblTurno.setForeground(Color.WHITE);
 		actualizarVentana();
 		for (int i = 0; i < this.botonera.botones.length; i++) {
 			for (int j = 0; j < this.botonera.botones[i].length; j++) {
@@ -23,9 +29,8 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	public void terMain(String coordenadas) {
 		int x = interpretarCoordenada(coordenadas)[0];
 		int y = interpretarCoordenada(coordenadas)[1];
-		mostrarTablero();
+		//mostrarTablero();
 		if (!this.control.comprobarTresEnRaya()) {
-			System.out.println("Libre.");
 			this.control.destinox = x;
 			this.control.destinoy = y;
 			if (!this.control.realizarJugada()) {
@@ -78,7 +83,6 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	private void resaltarCasillas() {
 		limpiarMarcas();
 		if (!this.control.comprobarTresEnRaya()) {
-			System.out.println("todavia no");
 			marcarTurnoActual();
 		} else {
 			marcarGanador(cambiarTurno());
@@ -104,7 +108,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		for (int i = 0; i < this.control.tablero.length; i++) {
 			for (int j = 0; j < this.control.tablero.length; j++) {
 				if (this.control.tablero[i][j] == turno) {
-					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(255, 60, 60), 6));
+					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(60, 255, 60), 6));
 				}
 			}
 		}
@@ -116,7 +120,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	private void limpiarMarcas() {
 		for (int i = 0; i < this.control.tablero.length; i++) {
 			for (int j = 0; j < this.control.tablero.length; j++) {
-					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(240, 240, 240), 0));
+					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(0, 0, 0), 1));
 			}
 		}
 	}
@@ -128,7 +132,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		for (int i = 0; i < this.control.tablero.length; i++) {
 			for (int j = 0; j < this.control.tablero.length; j++) {
 				if (this.control.tablero[i][j] == this.control.verTurno()) {
-					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(255, 160, 160), 3));
+					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(0, 128, 255), 3));
 				}
 			}
 		}

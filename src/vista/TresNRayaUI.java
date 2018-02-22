@@ -51,6 +51,7 @@ public class TresNRayaUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 302);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -61,6 +62,8 @@ public class TresNRayaUI extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 
 		txtMensaje = new JTextField();
+		txtMensaje.setForeground(Color.WHITE);
+		txtMensaje.setBackground(Color.DARK_GRAY);
 		txtMensaje.setEditable(false);
 		GridBagConstraints gbc_txtMensaje = new GridBagConstraints();
 		gbc_txtMensaje.insets = new Insets(0, 0, 5, 5);
@@ -71,6 +74,8 @@ public class TresNRayaUI extends JFrame {
 		txtMensaje.setColumns(10);
 
 		txtAnomalia = new JTextField();
+		txtAnomalia.setBackground(Color.DARK_GRAY);
+		txtAnomalia.setForeground(Color.WHITE);
 		txtAnomalia.setEditable(false);
 		GridBagConstraints gbc_txtAnomalia = new GridBagConstraints();
 		gbc_txtAnomalia.insets = new Insets(0, 0, 5, 0);
@@ -95,6 +100,8 @@ public class TresNRayaUI extends JFrame {
 		gbc_lblJugada.gridy = 1;
 		contentPane.add(lblJugada, gbc_lblJugada);
 		botonera = new Botonera(50, 50);
+		botonera.setForeground(Color.WHITE);
+		botonera.setBackground(Color.DARK_GRAY);
 		GridBagConstraints gbc_botonera = new GridBagConstraints();
 		gbc_botonera.gridwidth = 2;
 		gbc_botonera.fill = GridBagConstraints.BOTH;

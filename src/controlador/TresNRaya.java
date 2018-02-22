@@ -45,7 +45,6 @@ public class TresNRaya {
 	 * @return true si casilla pertenece al turno actual o false en caso contrario
 	 */
 	private boolean comprobarPropiedad() {
-		System.out.println(tablero[destinox][destinoy] + " = IGUALDAD =" + verTurno());
 		if (tablero[destinox][destinoy] == verTurno())
 			return true;
 
