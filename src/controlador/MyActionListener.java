@@ -30,7 +30,6 @@ public class MyActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton boton = (JButton) e.getSource();
 		String coordenadas = boton.getName();
-		String simbolo = boton.getText();
-		paraUI.terMain(coordenadas, simbolo);
+		paraUI.terMain(coordenadas);
 	}
 }

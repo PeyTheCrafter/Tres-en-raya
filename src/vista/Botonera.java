@@ -8,6 +8,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Botonera extends JPanel {
 
@@ -33,6 +35,7 @@ public class Botonera extends JPanel {
 				this.botones[i][j].setName(String.valueOf(i) + String.valueOf(j));
 				this.botones[i][j].setText("");
 				this.botones[i][j].setBounds(x, y, this.ladoBoton, this.ladoBoton);
+				this.botones[i][j].setFont(new Font("Tahoma", 1, 24));
 				this.add(this.botones[i][j]);
 				x += this.ladoBoton;
 			}

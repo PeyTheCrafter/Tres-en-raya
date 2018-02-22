@@ -1,5 +1,9 @@
 package controlador;
 
+import java.awt.Color;
+
+import javax.swing.border.LineBorder;
+
 import vista.TresNRayaUI;
 
 public class ParaTresNRayaUI extends TresNRayaUI {
@@ -16,26 +20,19 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		}
 	}
 
-	public void terMain(String coordenadas, String simbolo) {
-		for (int i = 0; i < 20; i++) {
-			System.out.println();
-		}
+	public void terMain(String coordenadas) {
 		int x = interpretarCoordenada(coordenadas)[0];
 		int y = interpretarCoordenada(coordenadas)[1];
-		// Establecer las coordenadas.
-		if (this.control.numerojugada <= 6) {
-			if (this.control.tablero[x][y] == 0) {
-				this.control.destinox = x;
-				this.control.destinoy = y;
+		mostrarTablero();
+		if (!this.control.comprobarTresEnRaya()) {
+			System.out.println("Libre.");
+			this.control.destinox = x;
+			this.control.destinoy = y;
+			if (!this.control.realizarJugada()) {
+				txtAnomalia.setText(this.control.indicarAnomalia());
 			}
-		} else {
-
+			actualizarVentana();
 		}
-
-		// Proceso normal de juego.
-		this.control.realizarJugada();
-
-		actualizarVentana();
 	}
 
 	/**
@@ -49,6 +46,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 			}
 			System.out.println();
 		}
+		System.out.println();
 	}
 
 	/**
@@ -69,15 +67,86 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	 * Actualiza los textos de los botones.
 	 */
 	public void actualizarVentana() {
+		resaltarCasillas();
 		actualizarBotones();
 		actualizarInformacion();
 	}
-	
+
+	/**
+	 * Controla el resaltado de las casillas
+	 */
+	private void resaltarCasillas() {
+		limpiarMarcas();
+		if (!this.control.comprobarTresEnRaya()) {
+			System.out.println("todavia no");
+			marcarTurnoActual();
+		} else {
+			marcarGanador(cambiarTurno());
+		}
+	}
+
+	/**
+	 * Cambia el turno al opuesto, porque cada vez que se hace una jugada se cambia.
+	 * 
+	 * @return el turno cambiado
+	 */
+	private int cambiarTurno() {
+		if (this.control.verTurno() == 2) {
+			return 1;
+		}
+		return 2;
+	}
+
+	/**
+	 * Marca la formación ganadora.
+	 */
+	private void marcarGanador(int turno) {
+		for (int i = 0; i < this.control.tablero.length; i++) {
+			for (int j = 0; j < this.control.tablero.length; j++) {
+				if (this.control.tablero[i][j] == turno) {
+					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(255, 60, 60), 6));
+				}
+			}
+		}
+	}
+
+	/**
+	 * Limpia las marcas de las casillas.
+	 */
+	private void limpiarMarcas() {
+		for (int i = 0; i < this.control.tablero.length; i++) {
+			for (int j = 0; j < this.control.tablero.length; j++) {
+					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(240, 240, 240), 0));
+			}
+		}
+	}
+
+	/**
+	 * Marca las casillas del turno actual.
+	 */
+	private void marcarTurnoActual() {
+		for (int i = 0; i < this.control.tablero.length; i++) {
+			for (int j = 0; j < this.control.tablero.length; j++) {
+				if (this.control.tablero[i][j] == this.control.verTurno()) {
+					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(255, 160, 160), 3));
+				}
+			}
+		}
+	}
+
+	/**
+	 * Actualiza la información superior de la ventana.
+	 */
 	private void actualizarInformacion() {
 		lblTurno.setText("Turno: " + String.valueOf(this.control.verTurno()));
 		lblJugada.setText("Jugada: " + this.control.numerojugada);
+		txtMensaje.setText(this.control.muestraLetrero());
+		txtAnomalia.setText(this.control.indicarAnomalia());
 	}
 
+	/**
+	 * Actualiza el contenido de los botones (casillas).
+	 */
 	private void actualizarBotones() {
 		for (int i = 0; i < this.botonera.botones.length; i++) {
 			for (int j = 0; j < this.botonera.botones.length; j++) {

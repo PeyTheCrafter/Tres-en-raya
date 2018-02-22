@@ -45,6 +45,7 @@ public class TresNRaya {
 	 * @return true si casilla pertenece al turno actual o false en caso contrario
 	 */
 	private boolean comprobarPropiedad() {
+		System.out.println(tablero[destinox][destinoy] + " = IGUALDAD =" + verTurno());
 		if (tablero[destinox][destinoy] == verTurno())
 			return true;
 
@@ -171,9 +172,11 @@ public class TresNRaya {
 	 * @return true si se da la circunstancia
 	 */
 	private boolean compruebaDiagonal() {
-		if (tablero[0][0] == tablero[1][1] && tablero[1][1] == tablero[2][2])
+		if (tablero[0][0] == tablero[1][1] && tablero[1][1] == tablero[2][2]
+				&& (tablero[0][0] != 0 && tablero[1][1] != 0 && tablero[2][2] != 0))
 			return true;
-		if (tablero[0][2] == tablero[1][1] && tablero[1][1] == tablero[2][0])
+		if (tablero[0][2] == tablero[1][1] && tablero[1][1] == tablero[2][0]
+				&& (tablero[2][0] != 0 && tablero[1][1] != 0 && tablero[0][2] != 0))
 			return true;
 		return false;
 	}
@@ -227,7 +230,7 @@ public class TresNRaya {
 	public String indicarAnomalia() {
 		if (numerojugada <= 6) {
 			if (!mirarCasillaLibre())
-				return "La casilla no est� libre";
+				return "La casilla no esta libre";
 		} else {
 			if (mover) {
 				if (!comprobarPropiedad())
@@ -237,7 +240,7 @@ public class TresNRaya {
 			} // if
 			else {
 				if (!mirarCasillaLibre())
-					return "La casilla no est� libre";
+					return "La casilla no esta libre";
 				if (!casillaContigua())
 					return "Casilla no contigua";
 
