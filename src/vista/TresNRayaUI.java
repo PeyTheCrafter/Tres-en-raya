@@ -24,6 +24,7 @@ public class TresNRayaUI extends JFrame {
 	 * Create the frame.
 	 */
 	public TresNRayaUI() {
+		setTitle("Tres en raya");
 		setMinimumSize(new Dimension(450, 300));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 302);
