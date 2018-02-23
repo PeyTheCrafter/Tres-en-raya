@@ -29,7 +29,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	public void terMain(String coordenadas) {
 		int x = interpretarCoordenada(coordenadas)[0];
 		int y = interpretarCoordenada(coordenadas)[1];
-		//mostrarTablero();
+		// mostrarTablero();
 		if (!this.control.comprobarTresEnRaya()) {
 			this.control.destinox = x;
 			this.control.destinoy = y;
@@ -108,7 +108,8 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		for (int i = 0; i < this.control.tablero.length; i++) {
 			for (int j = 0; j < this.control.tablero.length; j++) {
 				if (this.control.tablero[i][j] == turno) {
-					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(60, 255, 60), 6));
+					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(64, 255, 64), 6));
+					this.botonera.botones[i][j].setBackground(new Color(32, 128, 32));
 				}
 			}
 		}
@@ -120,7 +121,8 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	private void limpiarMarcas() {
 		for (int i = 0; i < this.control.tablero.length; i++) {
 			for (int j = 0; j < this.control.tablero.length; j++) {
-					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(0, 0, 0), 1));
+				this.botonera.botones[i][j].setBorder(new LineBorder(new Color(0, 0, 0), 1));
+				this.botonera.botones[i][j].setBackground(new Color(64, 64, 64));
 			}
 		}
 	}
@@ -133,6 +135,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 			for (int j = 0; j < this.control.tablero.length; j++) {
 				if (this.control.tablero[i][j] == this.control.verTurno()) {
 					this.botonera.botones[i][j].setBorder(new LineBorder(new Color(0, 128, 255), 3));
+					this.botonera.botones[i][j].setBackground(new Color(0, 64, 128));
 				}
 			}
 		}

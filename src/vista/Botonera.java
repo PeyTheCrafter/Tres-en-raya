@@ -39,6 +39,7 @@ public class Botonera extends JPanel {
 				this.botones[i][j].setBorder(new LineBorder(Color.BLACK, 2));
 				this.botones[i][j].setContentAreaFilled(false);
 				this.botones[i][j].setBounds(x, y, this.ladoBoton, this.ladoBoton);
+				this.botones[i][j].setOpaque(true);
 				this.botones[i][j].setForeground(Color.WHITE);
 				this.botones[i][j].setFont(new Font("Tahoma", 1, 24));
 				this.add(this.botones[i][j]);
