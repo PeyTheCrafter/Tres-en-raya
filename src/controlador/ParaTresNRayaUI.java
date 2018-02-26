@@ -13,11 +13,6 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 
 	public ParaTresNRayaUI() {
 		super();
-		txtAnomalia.setBorder(null);
-		txtMensaje.setBorder(null);
-		lblTurno.setHorizontalAlignment(SwingConstants.CENTER);
-		lblJugada.setForeground(Color.WHITE);
-		lblTurno.setForeground(Color.WHITE);
 		actualizarVentana();
 		for (int i = 0; i < this.botonera.botones.length; i++) {
 			for (int j = 0; j < this.botonera.botones[i].length; j++) {

@@ -22,10 +22,10 @@ public class Botonera extends JPanel {
 	 * Create the panel.
 	 */
 	public Botonera(int x, int y) {
-		setForeground(Color.BLACK);
-		setBackground(Color.DARK_GRAY);
+		this.setForeground(Color.BLACK);
+		this.setBackground(Color.DARK_GRAY);
 		this.setBounds(x, y, this.anchoPanel, this.altoPanel);
-		setLayout(null);
+		this.setLayout(null);
 		iniciarBotonera();
 	}
 

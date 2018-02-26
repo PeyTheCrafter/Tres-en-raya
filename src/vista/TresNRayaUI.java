@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -17,7 +18,6 @@ import javax.swing.JButton;
 import java.awt.Color;
 
 public class TresNRayaUI extends JFrame {
-
 	private JPanel contentPane;
 	protected Botonera botonera;
 	protected JTextField txtMensaje;
@@ -45,7 +45,7 @@ public class TresNRayaUI extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		setTitle("Tres en raya");
 		setMinimumSize(new Dimension(450, 300));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,6 +62,7 @@ public class TresNRayaUI extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 
 		txtMensaje = new JTextField();
+		txtMensaje.setBorder(null);
 		txtMensaje.setForeground(Color.WHITE);
 		txtMensaje.setBackground(Color.DARK_GRAY);
 		txtMensaje.setEditable(false);
@@ -74,6 +75,7 @@ public class TresNRayaUI extends JFrame {
 		txtMensaje.setColumns(10);
 
 		txtAnomalia = new JTextField();
+		txtAnomalia.setBorder(null);
 		txtAnomalia.setBackground(Color.DARK_GRAY);
 		txtAnomalia.setForeground(Color.WHITE);
 		txtAnomalia.setEditable(false);
@@ -86,6 +88,8 @@ public class TresNRayaUI extends JFrame {
 		txtAnomalia.setColumns(10);
 
 		lblTurno = new JLabel("");
+		lblTurno.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTurno.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblTurno = new GridBagConstraints();
 		gbc_lblTurno.fill = GridBagConstraints.BOTH;
 		gbc_lblTurno.insets = new Insets(0, 0, 5, 5);
@@ -94,11 +98,13 @@ public class TresNRayaUI extends JFrame {
 		contentPane.add(lblTurno, gbc_lblTurno);
 
 		lblJugada = new JLabel("");
+		lblJugada.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblJugada = new GridBagConstraints();
 		gbc_lblJugada.insets = new Insets(0, 0, 5, 0);
 		gbc_lblJugada.gridx = 1;
 		gbc_lblJugada.gridy = 1;
 		contentPane.add(lblJugada, gbc_lblJugada);
+		
 		botonera = new Botonera(50, 50);
 		botonera.setForeground(Color.WHITE);
 		botonera.setBackground(Color.DARK_GRAY);
